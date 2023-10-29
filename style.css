@@ -1,0 +1,117 @@
+@font-face {
+  font-family: meri;
+  src: url(fonts/Merriweather-Regular.ttf);
+}
+
+@font-face {
+  font-family: agb;
+  src: url(fonts/Agbalumo-Regular.ttf);
+}
+
+:root {
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: dodgerblue;
+}
+
+#header {
+  font-family: agb;
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 5rem;
+}
+
+#weatherApiIcon {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+}
+
+.content {
+  width: 400px;
+  margin: auto;
+}
+
+.card {
+  font-family: meri, serif;
+  height: 500px;
+  border: 3px solid black;
+  border-radius: 15px;
+  outline: none;
+  padding: 15px;
+  position: relative;
+}
+
+.card header {
+  font-size: 3rem;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(0, 0, 0, 1);
+}
+
+.card .date {
+  font-size: 1.8rem;
+  font-style: italic;
+  margin: 1rem 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card p {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#wind {
+  font-size: 1rem;
+}
+
+#backgroundImage {
+  position: absolute;
+  z-index: -1;
+  width: 400px;
+  height: 500px;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+}
+
+#weatherIcon {
+  height: 31px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  height: 50px;
+  font-size: 1.2rem;
+  color: lavender;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer a:hover {
+  opacity: 0.7;
+}
