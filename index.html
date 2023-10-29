@@ -22,12 +22,18 @@
         ><img
           src="//cdn.weatherapi.com/v4/images/weatherapi_logo.png"
           alt="Weather data by WeatherAPI.com"
-          border="0" /></a
-      ><span>Weather app</span>
+          border="0"
+      /></a>
+      <div class="searchField">
+        <label for="search">Search for city</label>
+        <input type="text" id="search" autocomplete="off" /><i
+          class="fa-solid fa-magnifying-glass"
+        ></i>
+      </div>
+      <button>Switch to Fahrenheit</button>
     </div>
     <section class="content">
       <!-- <div class="card">
-        <img src="images/cloudy.jpg" alt="" id="backgroundImage" />
         <header class="city">Katerini<span></span></header>
         <div class="date">29/10/2023 <span>15:00</span></div>
         <p class="status">Sunny<span>icon</span></p>
@@ -37,8 +43,16 @@
           Wind:
           <span>5 <span id="wind">km/h</span></span>
         </p>
+        <p class="windDir">Wind direction: <span>WNW</span></p>
+        <p class="rainChance">Rain chance: <span>0&#37;</span></p>
       </div> -->
     </section>
+
+    <div class="timeButtons">
+      <button class="now activeTimeButton">Now</button>
+      <button class="today">Today</button>
+      <button class="thisWeek">This week</button>
+    </div>
 
     <div class="footer">
       <p>
