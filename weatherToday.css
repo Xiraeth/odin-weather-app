@@ -1,0 +1,150 @@
+@import url("style.css");
+
+.weatherTodayCard {
+  font-family: meri, serif;
+  font-size: 1rem;
+  margin: auto;
+  width: 1600px;
+  height: 550px;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(45, 211, 183, 0.2),
+    rgb(45, 211, 183, 0.9)
+  );
+  outline: none;
+  padding: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.weatherTodayCard .todayHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weatherTodayCard .dateAndLocation {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: flex-start;
+  /* gap: 2rem; */
+}
+
+.weatherTodayCard .dateAndLocation .city {
+  font-family: agb;
+  font-size: 3em;
+  line-height: 2.5rem;
+  padding-bottom: 10px;
+}
+
+.weatherTodayCard .dateAndLocation .date {
+  font-size: 2em;
+}
+
+.todayHeader .stats {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.todayHeader .stats div {
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.todayHeader .statusAndIcon {
+  display: flex;
+  align-items: center;
+  font-size: 2em;
+}
+
+.weatherTodayCard .hourSegments {
+  font-size: 1em;
+  min-height: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.weatherTodayCard .hourSegments > div:not(.border) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.3em;
+  padding: 1em;
+  transition: all 0.2s;
+}
+
+.weatherTodayCard .hourSegments > div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.weatherTodayCard .hourSegments > div .hour {
+  font-style: italic;
+  font-size: 2em;
+}
+
+.weatherTodayCard .hourSegments > div .hour img {
+  width: 20px;
+}
+
+.weatherTodayCard .hourSegments .border {
+  height: 100%;
+  background: black;
+  width: 1px;
+  content: "";
+}
+
+@media only screen and (max-width: 1600px) {
+  .weatherTodayCard {
+    font-size: 0.7rem;
+    width: 1000px;
+  }
+
+  .weatherTodayCard .dateAndLocation {
+    width: 30%;
+  }
+
+  .weatherTodayCard .hourSegments .border {
+    display: none;
+  }
+
+  .skippable {
+    display: none;
+  }
+
+  .weatherTodayCard .hourSegments > div > div {
+    gap: 0;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .weatherTodayCard {
+    font-size: 0.4rem;
+    width: 450px;
+  }
+
+  .weatherTodayCard .dateAndLocation .city {
+    font-family: meri;
+  }
+}
+
+.hidden {
+  display: none;
+}

@@ -8,12 +8,13 @@
       crossorigin="anonymous"
     ></script>
     <script src="main.js" defer type="module"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="weatherNow.css" />
+    <link rel="stylesheet" href="weatherToday.css" />
     <title>Weather</title>
   </head>
 
   <body>
-    <div id="header">
+    <section id="header">
       <a
         href="https://www.weatherapi.com/"
         title="Free Weather API"
@@ -31,22 +32,9 @@
         ></i>
       </div>
       <button class="switchButton">Switch to Fahrenheit</button>
-    </div>
-    <section class="content">
-      <!-- <div class="card">
-        <header class="city">Katerini<span></span></header>
-        <div class="date">29/10/2023 <span>15:00</span></div>
-        <p class="status">Sunny<span>icon</span></p>
-        <p class="temp">Temperature: <span>21&deg;C</span></p>
-        <p class="humid">Humidity: <span>69&#37;</span></p>
-        <p class="wind">
-          Wind:
-          <span>5 <span id="wind">km/h</span></span>
-        </p>
-        <p class="windDir">Wind direction: <span>WNW</span></p>
-        <p class="rainChance">Rain chance: <span>0&#37;</span></p>
-      </div> -->
     </section>
+
+    <section class="content"></section>
 
     <div class="timeButtons">
       <button class="nowButton activeTimeButton">Now</button>

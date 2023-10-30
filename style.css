@@ -23,154 +23,16 @@
 
 body {
   min-height: 100vh;
-  background-color: var(--bg);
-}
-
-#header {
-  padding: 1rem;
-  margin-bottom: 5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: meri;
-}
-
-#header p {
-  font-family: agb;
-  font-size: 2rem;
-}
-
-#header .searchField {
-  font-size: 2rem;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 1rem;
-}
-
-#header input {
-  font-size: 1.8rem;
-  border-radius: 10px;
-  border: 2px solid black;
-  outline: none;
-  padding: 5px 10px;
-  background: rgb(255, 255, 255, 0.7);
-  transition: all 0.15s;
-}
-
-#header input:hover {
-  background: rgb(255, 255, 255, 0.85);
-}
-
-#header input:focus {
-  background: white;
-}
-
-.fa-magnifying-glass {
-  font-size: 1.5rem;
-  opacity: 0.5;
-  cursor: pointer;
-  transition: all 0.1s;
-}
-
-.fa-magnifying-glass:hover {
-  opacity: 0.7;
-}
-
-.fa-magnifying-glass:active {
-  opacity: 1;
-}
-
-#header button {
-  width: 200px;
-  font-family: meri;
-  border: 2px solid black;
-  border-radius: 10px;
-  outline: none;
-  padding: 0.5rem;
-  background-color: transparent;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.1s;
-}
-
-#header button:hover {
-  color: var(--bg);
-  background: var(--button-hover-bg);
-}
-
-#header button:active {
-  background: var(--button-active-bg);
-}
-
-.content {
-  margin: auto;
-}
-
-.card {
-  font-family: meri, serif;
-  margin: auto;
-  width: 400px;
-  height: 500px;
-  border: 3px solid black;
-  border-radius: 10px;
-  /* background-color: rgba(107, 255, 186, 0.7); */
-  background-image: linear-gradient(to bottom, transparent, rgb(45, 211, 183));
-  outline: none;
-  padding: 15px;
-  position: relative;
-}
-
-.card header {
-  font-size: 3rem;
-  font-family: agb;
-  font-weight: bold;
-  border-bottom: 2px solid rgba(0, 0, 0, 1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card .date {
-  font-size: 1.8rem;
-  font-style: italic;
-  margin: 1rem 0;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
-  padding-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card p {
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-#wind {
-  font-size: 1rem;
-}
-
-#backgroundImage {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  border-radius: 15px;
+  background: var(--bg);
+  overflow-x: hidden;
 }
 
 .footer {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   background: rgba(0, 0, 0, 0.4);
-  height: 50px;
+  height: 70px;
   font-size: 1.2rem;
   color: lavender;
   display: flex;
@@ -184,43 +46,4 @@ body {
 
 .footer a:hover {
   color: rgb(111, 255, 195);
-}
-
-.timeButtons {
-  width: 600px;
-  margin: auto;
-  margin-top: 100px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.timeButtons button {
-  font-family: agb;
-  font-size: 1.5rem;
-  border: 1px solid black;
-  border-radius: 10px;
-  outline: none;
-  padding: 5px 15px;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.timeButtons button:not(.activeTimeButton) {
-  background-color: transparent;
-}
-
-.timeButtons button:hover {
-  background: var(--button-hover-bg);
-  color: rgb(73, 164, 255);
-}
-
-.timeButtons button:active:not(.activeTimeButton) {
-  background: var(--button-active-bg);
-}
-
-.activeTimeButton {
-  background: var(--button-hover-bg);
-  color: rgb(73, 164, 255);
 }
