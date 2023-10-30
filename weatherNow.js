@@ -83,6 +83,6 @@ export function switchButtonHandler(e) {
   getWeatherNow(tempForm);
 }
 
-export function pageLoadWeather() {
+export function pageLoadWeatherHandler() {
   getWeatherNow(tempForm);
 }
