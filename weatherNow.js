@@ -1,7 +1,9 @@
 import * as config from "./config.js";
 import getCoordinates from "./getCoords.js";
 
-export default async function getWeatherNow(tempForm) {
+let tempForm = config.tempForm;
+
+export async function getWeatherNow(tempForm) {
   const formatter = new Intl.NumberFormat("en-us", {
     minimumIntegerDigits: 2,
     useGrouping: false,
@@ -34,7 +36,8 @@ export default async function getWeatherNow(tempForm) {
     humid,
     wind,
     windDir,
-    icon
+    icon,
+    tempForm
   );
 }
 
@@ -47,7 +50,8 @@ function loadWeatherNowHTML(
   humid,
   wind,
   windDir,
-  icon
+  icon,
+  tempForm
 ) {
   const markup = `
     <div class="card">
@@ -55,7 +59,7 @@ function loadWeatherNowHTML(
       <div class="date">${date} <span>${time}</span></div>
       <p class="status">Status: <span>${status}</span></p>
       <p class="temp">Temperature: <span>${temperature}&deg;${
-    config.tempForm == "celsius" ? "C" : "F"
+    tempForm == "celsius" ? "C" : "F"
   }</span></p>
       <p class="humid">Humidity: <span>${humid}&#37;</span></p>
       <p class="wind">
@@ -67,4 +71,18 @@ function loadWeatherNowHTML(
   `;
   config.content.innerHTML = "";
   config.content.insertAdjacentHTML("beforeend", markup);
+}
+
+export function switchButtonHandler(e) {
+  tempForm = tempForm == "celsius" ? "fahrenheit" : "celsius";
+  config.switchButton.textContent =
+    config.switchButton.textContent == "Switch to Fahrenheit"
+      ? "Switch to Celsius"
+      : "Switch to Fahrenheit";
+
+  getWeatherNow(tempForm);
+}
+
+export function pageLoadWeather() {
+  getWeatherNow(tempForm);
 }
