@@ -1,6 +1,7 @@
 @import url("style.css");
 
 .weatherTodayCard {
+  color: white;
   font-family: meri, serif;
   font-size: 1rem;
   margin: auto;
@@ -11,7 +12,7 @@
   background-image: linear-gradient(
     to bottom,
     transparent,
-    rgba(26, 176, 196, 0.2),
+    rgba(26, 176, 196, 0.3),
     rgba(22, 189, 111, 0.5)
   );
   outline: none;

@@ -91,16 +91,16 @@
 }
 
 .card {
+  color: white;
   font-family: meri, serif;
   margin: auto;
   width: 400px;
   height: 550px;
-  border: 3px solid black;
-  border-radius: 10px;
+  border: 1px solid black;
   background-image: linear-gradient(
     to bottom,
     transparent,
-    rgba(26, 176, 196, 0.2),
+    rgba(26, 176, 196, 0.3),
     rgba(22, 189, 111, 0.5)
   );
   outline: none;
@@ -110,7 +110,7 @@
 
 .card header {
   font-size: 3rem;
-  font-family: agb;
+  font-family: meri;
   font-weight: bold;
   border-bottom: 2px solid rgba(0, 0, 0, 1);
   display: flex;
