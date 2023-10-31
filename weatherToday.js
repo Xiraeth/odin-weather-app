@@ -42,8 +42,8 @@ export default async function getWeatherForecastHourly(tempForm) {
           }&#176;${tempForm == "celsius" ? "C" : "F"}</div>
           <div class="minTemp"><strong>Min:</strong> ${
             tempForm == "celsius"
-              ? todaysForecast.maxtemp_c
-              : todaysForecast.maxtemp_f
+              ? todaysForecast.mintemp_c
+              : todaysForecast.mintemp_f
           }&#176;${tempForm == "celsius" ? "C" : "F"}</div>
         </tempStats>
         <otherStats>
