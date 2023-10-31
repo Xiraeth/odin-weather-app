@@ -7,6 +7,8 @@
   justify-content: space-between;
   align-items: center;
   font-family: meri;
+  background-color: rgba(255, 99, 71, 0.4);
+  color: white;
 }
 
 #header img {
@@ -63,9 +65,10 @@
 }
 
 #header button {
+  color: white;
   width: 201px;
   font-family: meri;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
   outline: none;
   padding: 1rem;
@@ -76,12 +79,11 @@
 }
 
 #header button:hover {
-  color: var(--bg);
-  background: var(--button-hover-bg);
+  background: rgb(41, 41, 41, 0.2);
 }
 
 #header button:active {
-  background: var(--button-active-bg);
+  background: rgb(41, 41, 41, 0.4);
 }
 
 .content {
