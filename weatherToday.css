@@ -11,8 +11,8 @@
   background-image: linear-gradient(
     to bottom,
     transparent,
-    rgb(45, 211, 183, 0.2),
-    rgb(45, 211, 183, 0.9)
+    rgba(26, 176, 196, 0.2),
+    rgba(22, 189, 111, 0.5)
   );
   outline: none;
   padding: 12px;

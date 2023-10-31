@@ -1,7 +1,7 @@
 import * as config from "./config.js";
 import getCoordinates from "./getCoords.js";
 
-export default async function getWeatherForecastHourly() {
+export default async function getWeatherForecastHourly(tempForm) {
   config.content.innerHTML = "";
   const { lat, long } = await getCoordinates();
   const url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=1`;
@@ -10,6 +10,7 @@ export default async function getWeatherForecastHourly() {
 
   const todaysForecast = data.forecast.forecastday[0].day;
   const hourlyForecast = data.forecast.forecastday[0];
+  console.log(data);
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -27,7 +28,7 @@ export default async function getWeatherForecastHourly() {
   <div class="weatherTodayCard">
     <div class="todayHeader">
       <div class="dateAndLocation">
-        <div class="city">${data.location.name}, ${data.location.region}a</div>
+        <div class="city">${data.location.name}, ${data.location.region}</div>
         <div class="date">${daysOfWeek[now.getDay()]}, ${day}/${
     month + 1
   }/${year}</div>
@@ -35,11 +36,15 @@ export default async function getWeatherForecastHourly() {
       <div class="stats">
         <tempStats>
           <div class="maxTemp"><strong>Max:</strong> ${
-            todaysForecast.maxtemp_c
-          }&#176;C</div>
+            tempForm == "celsius"
+              ? todaysForecast.maxtemp_c
+              : todaysForecast.maxtemp_f
+          }&#176;${tempForm == "celsius" ? "C" : "F"}</div>
           <div class="minTemp"><strong>Min:</strong> ${
-            todaysForecast.mintemp_c
-          }&#176;C</div>
+            tempForm == "celsius"
+              ? todaysForecast.maxtemp_c
+              : todaysForecast.maxtemp_f
+          }&#176;${tempForm == "celsius" ? "C" : "F"}</div>
         </tempStats>
         <otherStats>
           <div class="totalPrecip">
@@ -61,10 +66,10 @@ export default async function getWeatherForecastHourly() {
 
   config.content.insertAdjacentHTML("afterbegin", markup);
   const todayCard = document.querySelector(".weatherTodayCard");
-  createHourlyForecast(hourlyForecast.hour, todayCard);
+  createHourlyForecast(hourlyForecast.hour, todayCard, tempForm);
 }
 
-function createHourlyForecast(hourlyForecastArray, content) {
+function createHourlyForecast(hourlyForecastArray, content, tempForm) {
   let markup = "";
   const hourSegments = document.createElement("div");
   hourSegments.classList.add("hourSegments");
@@ -77,7 +82,9 @@ function createHourlyForecast(hourlyForecastArray, content) {
         <div class="hour">${forecastObj.time.slice(-5)} <img src="${
         forecastObj.condition.icon
       }"></img></div>
-        <div class="temp">Temp: <span>${forecastObj.temp_c}&#176;C</span></div>
+        <div class="temp">Temp: <span>${
+          tempForm == "celsius" ? forecastObj.temp_c : forecastObj.temp_f
+        }&#176;${tempForm == "celsius" ? "C" : "F"}</span></div>
         <div class="humid">Humidity: <span>${forecastObj.humidity}%</span></div>
         <div class="precip">Precip.: <span>${
           forecastObj.precip_mm
@@ -100,7 +107,9 @@ function createHourlyForecast(hourlyForecastArray, content) {
         <div class="hour">${forecastObj.time.slice(-5)} <img src="${
         forecastObj.condition.icon
       }"></div>
-        <div class="temp">Temp: <span>${forecastObj.temp_c}&#176;C</span></div>
+        <div class="temp">Temp: <span>${
+          tempForm == "celsius" ? forecastObj.temp_c : forecastObj.temp_f
+        }&#176;${tempForm == "celsius" ? "C" : "F"}</span></div>
         <div class="humid">Humidity: <span>${forecastObj.humidity}%</span></div>
         <div class="precip">Precip.: <span>${
           forecastObj.precip_mm

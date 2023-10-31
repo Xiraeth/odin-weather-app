@@ -95,8 +95,12 @@
   height: 550px;
   border: 3px solid black;
   border-radius: 10px;
-  /* background-color: rgba(107, 255, 186, 0.7); */
-  background-image: linear-gradient(to bottom, transparent, rgb(45, 211, 183));
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(26, 176, 196, 0.2),
+    rgba(22, 189, 111, 0.5)
+  );
   outline: none;
   padding: 15px;
   position: relative;
@@ -171,9 +175,9 @@
   background-color: transparent;
 }
 
-.timeButtons button:hover {
-  background: var(--button-hover-bg);
-  color: rgb(73, 164, 255);
+.timeButtons button:hover:not(.activeTimeButton) {
+  background-color: var(--button-hover-bg);
+  color: var(--bg);
 }
 
 .timeButtons button:active:not(.activeTimeButton) {
@@ -182,7 +186,7 @@
 
 .activeTimeButton {
   background: var(--button-hover-bg);
-  color: rgb(73, 164, 255);
+  color: var(--bg);
 }
 
 @media only screen and (max-width: 1000px) {

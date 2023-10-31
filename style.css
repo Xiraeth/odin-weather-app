@@ -10,9 +10,9 @@
 
 :root {
   font-size: 16px;
-  --button-hover-bg: rgb(36, 36, 36);
+  --button-hover-bg: rgb(48, 48, 48);
   --button-active-bg: rgb(68, 68, 68);
-  --bg: rgb(73, 164, 255);
+  --bg: rgba(255, 127, 80, 0.5);
 }
 
 * {

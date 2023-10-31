@@ -23,6 +23,8 @@ export async function getWeatherNow(tempForm) {
     now.getMinutes()
   )}`;
   const humid = response.current.humidity;
+  const precip = response.current.precip_mm;
+  const pressure = response.current.pressure_mb;
   const wind = response.current.wind_kph;
   const windDir = response.current.wind_dir;
   const icon = response.current.condition.icon;
@@ -34,6 +36,8 @@ export async function getWeatherNow(tempForm) {
     date,
     time,
     humid,
+    precip,
+    pressure,
     wind,
     windDir,
     icon,
@@ -48,6 +52,8 @@ function loadWeatherNowHTML(
   date,
   time,
   humid,
+  precip,
+  pressure,
   wind,
   windDir,
   icon,
@@ -62,6 +68,8 @@ function loadWeatherNowHTML(
     tempForm == "celsius" ? "C" : "F"
   }</span></p>
       <p class="humid">Humidity: <span>${humid}&#37;</span></p>
+      <p class="precip">Precipitation: <span>${precip}mm</span></p>
+      <p class="pressure">Pressure: <span>${pressure}mb</span></p>
       <p class="wind">
         Wind:
         <span>${wind} <span id="wind">km/h</span></span>
@@ -71,18 +79,4 @@ function loadWeatherNowHTML(
   `;
   config.content.innerHTML = "";
   config.content.insertAdjacentHTML("beforeend", markup);
-}
-
-export function switchButtonHandler(e) {
-  tempForm = tempForm == "celsius" ? "fahrenheit" : "celsius";
-  config.switchButton.textContent =
-    config.switchButton.textContent == "Switch to Fahrenheit"
-      ? "Switch to Celsius"
-      : "Switch to Fahrenheit";
-
-  getWeatherNow(tempForm);
-}
-
-export function pageLoadWeatherHandler() {
-  getWeatherNow(tempForm);
 }
