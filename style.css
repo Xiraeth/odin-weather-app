@@ -10,9 +10,9 @@
 
 :root {
   font-size: 16px;
-  --button-hover-bg: rgba(153, 153, 153, 0.3);
-  --button-active-bg: rgb(68, 68, 68);
-  --bg: rgba(255, 127, 80, 0.5);
+  --button-hover-bg: rgba(248, 248, 248, 0.7);
+  --button-active-bg: rgba(248, 248, 248, 0.5);
+  --bg: rgba(255, 99, 71, 0.4);
 }
 
 * {
@@ -38,8 +38,8 @@ body {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  background: rgba(0, 0, 0, 0.4);
-  height: 70px;
+  background: rgba(255, 255, 255, 0.2);
+  height: 55px;
   font-size: 1.2rem;
   color: lavender;
   display: flex;

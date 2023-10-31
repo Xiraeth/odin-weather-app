@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   font-family: meri;
-  background-color: rgba(255, 99, 71, 0.4);
+  background-color: var(--bg);
   color: white;
 }
 
@@ -79,11 +79,11 @@
 }
 
 #header button:hover {
-  background: rgb(41, 41, 41, 0.2);
+  background: rgb(41, 41, 41, 0.1);
 }
 
 #header button:active {
-  background: rgb(41, 41, 41, 0.4);
+  background: rgb(41, 41, 41, 0.05);
 }
 
 .content {
@@ -97,13 +97,14 @@
   width: 400px;
   height: 550px;
   border: 1px solid black;
+  border-radius: 10px;
+  outline: none;
   background-image: linear-gradient(
     to bottom,
     transparent,
     rgba(26, 176, 196, 0.3),
     rgba(22, 189, 111, 0.5)
   );
-  outline: none;
   padding: 15px;
   position: relative;
 }
@@ -164,6 +165,7 @@
 
 .timeButtons button {
   font-family: agb;
+  color: white;
   font-size: 1.5rem;
   border: 1px solid black;
   border-radius: 10px;
@@ -174,21 +176,22 @@
 }
 
 .timeButtons button:not(.activeTimeButton) {
-  background-color: transparent;
+  background-color: tomato;
 }
 
 .timeButtons button:hover:not(.activeTimeButton) {
-  background-color: var(--button-hover-bg);
-  color: var(--bg);
+  background-color: white;
+  color: tomato;
 }
 
 .timeButtons button:active:not(.activeTimeButton) {
-  background: var(--button-active-bg);
+  background-color: rgba(248, 248, 248, 0.7);
+  color: tomato;
 }
 
-.activeTimeButton {
-  background: var(--button-hover-bg);
-  color: var(--bg);
+.timeButtons .activeTimeButton {
+  background-color: white;
+  color: tomato;
 }
 
 @media only screen and (max-width: 1000px) {
