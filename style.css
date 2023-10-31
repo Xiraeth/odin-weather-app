@@ -47,3 +47,18 @@ body {
 .footer a:hover {
   color: rgb(111, 255, 195);
 }
+
+.footer p:last-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer p:last-child a {
+  display: flex;
+  align-items: center;
+}
+
+.footer p:last-child a span {
+  margin-left: 10px;
+}
