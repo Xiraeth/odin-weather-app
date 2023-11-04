@@ -26,8 +26,9 @@ export default async function getWeatherWeeklyForecast(tempForm, location) {
     else
       url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=7`;
     const request = await fetch(url);
-    const data = await request.json();
+    if (!request.ok) throw new Error("Invalid location. Try again.");
 
+    const data = await request.json();
     // Defining maximum weekly temperature for Celsius and Fahrenheit
     const maxTempWeek_c = getMaxTempWeekly_c(data);
     const maxTempWeek_f = getMaxTempWeekly_f(data);

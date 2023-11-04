@@ -13,11 +13,12 @@ export default async function getWeatherForecastHourly(tempForm, location) {
       url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=1`;
     }
     const request = await fetch(url);
+    if (!request.ok) throw new Error("Invalid location. Try again");
+
     const data = await request.json();
 
     const todaysForecast = data.forecast.forecastday[0].day;
     const hourlyForecast = data.forecast.forecastday[0];
-    console.log(data);
     const daysOfWeek = [
       "Sunday",
       "Monday",
