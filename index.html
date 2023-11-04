@@ -10,6 +10,7 @@
     <script src="main.js" defer type="module"></script>
     <link rel="stylesheet" href="weatherNow.css" />
     <link rel="stylesheet" href="weatherToday.css" />
+    <link rel="stylesheet" href="weatherWeak.css" />
     <title>Weather</title>
   </head>
 
@@ -26,12 +27,14 @@
           alt="Weather data by WeatherAPI.com"
           border="0"
       /></a>
-      <div class="searchField">
+      <form class="searchField">
         <label for="search">Search for city</label>
-        <input type="text" id="search" autocomplete="off" /><i
-          class="fa-solid fa-magnifying-glass"
-        ></i>
-      </div>
+        <input type="text" id="search" autocomplete="off" />
+          <i
+            class="fa-solid fa-magnifying-glass"
+          ></i>
+        </input>
+      </form>
       <button class="switchButton">Switch to Fahrenheit</button>
     </section>
 

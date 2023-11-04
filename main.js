@@ -1,6 +1,6 @@
 "use strict";
 
-import { getWeatherNow } from "./weatherNow.js";
+import getWeatherNow from "./weatherNow.js";
 import getWeatherForecastHourly from "./weatherToday.js";
 import * as config from "./config.js";
 

@@ -1,9 +1,7 @@
 import * as config from "./config.js";
 import getCoordinates from "./getCoords.js";
 
-let tempForm = config.tempForm;
-
-export async function getWeatherNow(tempForm) {
+export default async function getWeatherNow(tempForm) {
   const formatter = new Intl.NumberFormat("en-us", {
     minimumIntegerDigits: 2,
     useGrouping: false,
