@@ -1,11 +1,11 @@
 @font-face {
   font-family: meri;
-  src: url(fonts/Merriweather-Regular.ttf);
+  src: url(../fonts/Merriweather-Regular.ttf);
 }
 
 @font-face {
   font-family: agb;
-  src: url(fonts/Agbalumo-Regular.ttf);
+  src: url(../fonts/Agbalumo-Regular.ttf);
 }
 
 :root {
