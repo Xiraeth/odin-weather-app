@@ -12,39 +12,40 @@ const daysOfWeek = [
 ];
 
 export default async function getWeatherWeeklyForecast(tempForm, location) {
-  config.content.innerHTML = "";
+  try {
+    config.content.innerHTML = "";
 
-  const formatter = new Intl.NumberFormat("gr-GR", {
-    useGrouping: false,
-    minimumIntegerDigits: 2,
-  });
-  const { lat, long } = await getCoordinates();
-  let url;
-  if (location == "here" || location == "")
-    url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=7`;
-  else
-    url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=7`;
-  const request = await fetch(url);
-  const data = await request.json();
+    const formatter = new Intl.NumberFormat("gr-GR", {
+      useGrouping: false,
+      minimumIntegerDigits: 2,
+    });
+    const { lat, long } = await getCoordinates();
+    let url;
+    if (location == "here" || location == "")
+      url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=7`;
+    else
+      url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=7`;
+    const request = await fetch(url);
+    const data = await request.json();
 
-  // Defining maximum weekly temperature for Celsius and Fahrenheit
-  const maxTempWeek_c = getMaxTempWeekly_c(data);
-  const maxTempWeek_f = getMaxTempWeekly_f(data);
+    // Defining maximum weekly temperature for Celsius and Fahrenheit
+    const maxTempWeek_c = getMaxTempWeekly_c(data);
+    const maxTempWeek_f = getMaxTempWeekly_f(data);
 
-  // Same for min temperature
-  const minTempWeek_c = getMinTempWeekly_c(data);
-  const minTempWeek_f = getMinTempWeekly_f(data);
+    // Same for min temperature
+    const minTempWeek_c = getMinTempWeekly_c(data);
+    const minTempWeek_f = getMinTempWeekly_f(data);
 
-  const totalPrecip = getTotalPrecip(data);
+    const totalPrecip = getTotalPrecip(data);
 
-  const avgHumidity = getAvgHumidity(data);
+    const avgHumidity = getAvgHumidity(data);
 
-  const now = new Date();
-  const month = formatter.format(now.getMonth() + 1);
-  const day = formatter.format(now.getDate());
-  const year = formatter.format(now.getFullYear());
+    const now = new Date();
+    const month = formatter.format(now.getMonth() + 1);
+    const day = formatter.format(now.getDate());
+    const year = formatter.format(now.getFullYear());
 
-  const markup = `
+    const markup = `
   <div class="weatherWeeklyCard">
     <div class="todayHeader">
       <div class="dateAndLocation">
@@ -75,18 +76,26 @@ export default async function getWeatherWeeklyForecast(tempForm, location) {
       </div>
     </div>
   `;
-  // Insert the HTML into the DOM to create the forecast
-  config.content.insertAdjacentHTML("afterbegin", markup);
-  const weekCard = document.querySelector(".weatherWeeklyCard");
+    // Insert the HTML into the DOM to create the forecast
+    config.content.insertAdjacentHTML("afterbegin", markup);
+    const weekCard = document.querySelector(".weatherWeeklyCard");
 
-  createWeeklyForecast(data.forecast.forecastday, weekCard, tempForm);
+    createWeeklyForecast(data.forecast.forecastday, weekCard, tempForm);
 
-  // Display a clock on the top right of the weekly forecast tab
-  const clock = document.querySelector(".timeLive");
-  clock.textContent = getTimeNow(formatter);
-  setInterval(function () {
+    // Display a clock on the top right of the weekly forecast tab
+    const clock = document.querySelector(".timeLive");
     clock.textContent = getTimeNow(formatter);
-  }, 1000);
+    setInterval(function () {
+      clock.textContent = getTimeNow(formatter);
+    }, 1000);
+  } catch (err) {
+    config.timeButtons.style.display = "none";
+    const errorDiv = document.createElement("div");
+    errorDiv.classList.add("errorMessage");
+    errorDiv.textContent = err;
+    config.content.innerHTML = "";
+    config.content.insertAdjacentElement("afterbegin", errorDiv);
+  }
 }
 
 // Create the HTML for the weekly forecast
