@@ -1,10 +1,15 @@
 import * as config from "./config.js";
 import getCoordinates from "./getCoords.js";
 
-export default async function getWeatherForecastHourly(tempForm) {
+export default async function getWeatherForecastHourly(tempForm, location) {
   config.content.innerHTML = "";
   const { lat, long } = await getCoordinates();
-  const url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=1`;
+  let url;
+  if (location == "here")
+    url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=1`;
+  else {
+    url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=1`;
+  }
   const request = await fetch(url);
   const data = await request.json();
 
@@ -28,7 +33,7 @@ export default async function getWeatherForecastHourly(tempForm) {
   <div class="weatherTodayCard">
     <div class="todayHeader">
       <div class="dateAndLocation">
-        <div class="city">${data.location.name}, ${data.location.region}</div>
+        <div class="city">${data.location.name}, ${data.location.country}</div>
         <div class="date">${daysOfWeek[now.getDay()]}, ${day}/${
     month + 1
   }/${year}</div>

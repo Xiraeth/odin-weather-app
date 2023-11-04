@@ -9,3 +9,5 @@ export const nowButton = document.querySelector(".nowButton");
 export const todayButton = document.querySelector(".todayButton");
 export const weekButton = document.querySelector(".thisWeekButton");
 export const content = document.querySelector(".content");
+export const searchField = document.querySelector("#search");
+export const magnifyingGlass = document.querySelector(".fa-magnifying-glass");

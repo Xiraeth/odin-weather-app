@@ -11,7 +11,7 @@ const daysOfWeek = [
   "Saturday",
 ];
 
-export default async function getWeatherWeeklyForecast(tempForm) {
+export default async function getWeatherWeeklyForecast(tempForm, location) {
   config.content.innerHTML = "";
 
   const formatter = new Intl.NumberFormat("gr-GR", {
@@ -19,7 +19,11 @@ export default async function getWeatherWeeklyForecast(tempForm) {
     minimumIntegerDigits: 2,
   });
   const { lat, long } = await getCoordinates();
-  const url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=7`;
+  let url;
+  if (location == "here")
+    url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=7`;
+  else
+    url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=7`;
   const request = await fetch(url);
   const data = await request.json();
 
@@ -44,7 +48,7 @@ export default async function getWeatherWeeklyForecast(tempForm) {
   <div class="weatherWeeklyCard">
     <div class="todayHeader">
       <div class="dateAndLocation">
-        <div class="city">${data.location.name}, ${data.location.region}</div>
+        <div class="city">${data.location.name}, ${data.location.country}</div>
         <div class="date">${
           daysOfWeek[now.getDay()]
         }, ${day}/${month}/${year}</div>
@@ -92,13 +96,7 @@ function createWeeklyForecast(data, content, tempForm) {
   const daySegments = document.createElement("div");
   daySegments.classList.add("daySegments");
   content.appendChild(daySegments);
-
-  const now = new Date();
-  const dayNum = now.getDate();
-  const month = now.getMonth();
-  console.log(data);
   data.forEach((day, i) => {
-    console.log(day);
     const { dayNum, dateFormat } = getDay(day);
     if (i < 6) {
       markup += `
