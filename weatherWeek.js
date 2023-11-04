@@ -20,7 +20,7 @@ export default async function getWeatherWeeklyForecast(tempForm, location) {
   });
   const { lat, long } = await getCoordinates();
   let url;
-  if (location == "here")
+  if (location == "here" || location == "")
     url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=7`;
   else
     url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=7`;

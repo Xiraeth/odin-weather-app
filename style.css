@@ -69,3 +69,10 @@ body {
 .footer p:last-child a span {
   margin-left: 10px;
 }
+
+.errorMessage {
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+  color: rgb(255, 230, 0);
+}

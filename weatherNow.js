@@ -3,23 +3,22 @@ import getCoordinates from "./getCoords.js";
 
 export default async function getWeatherNow(tempForm, location) {
   try {
+    config.timeButtons.style.display = "flex";
     const formatter = new Intl.NumberFormat("en-us", {
       minimumIntegerDigits: 2,
       useGrouping: false,
     });
     const { lat, long } = await getCoordinates();
     let url;
-    if (location == "here")
+    if (location == "here" || location == "")
       url = `${config.WEATHER_BASE_URL}/current.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}`;
     else
       url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}`;
     const request = await fetch(url);
-    console.log(request);
     if (!request.ok) {
-      throw new Error("Invalid location. Try again!");
+      throw new Error("Invalid location. Try again.");
     }
     const response = await request.json();
-    console.log(response);
 
     const city = response.location.name;
     const status = response.current.condition.text;
@@ -51,10 +50,12 @@ export default async function getWeatherNow(tempForm, location) {
       tempForm
     );
   } catch (err) {
+    config.timeButtons.style.display = "none";
     const errorDiv = document.createElement("div");
     errorDiv.classList.add("errorMessage");
-    config.content.append(errorDiv);
-    config.content.textContent = err;
+    errorDiv.textContent = err;
+    config.content.innerHTML = "";
+    config.content.insertAdjacentElement("afterbegin", errorDiv);
   }
 }
 

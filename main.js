@@ -39,9 +39,9 @@ function switchButtonHandler(e) {
       ? "Switch to Celsius"
       : "Switch to Fahrenheit";
 
-  if (activeTab == "now") getWeatherNow(tempForm);
-  else if (activeTab == "today") getWeatherForecastHourly(tempForm);
-  else getWeatherWeeklyForecast(tempForm);
+  if (activeTab == "now") getWeatherNow(tempForm, location);
+  else if (activeTab == "today") getWeatherForecastHourly(tempForm, location);
+  else getWeatherWeeklyForecast(tempForm, location);
 }
 
 function getWeatherNowHandler() {
@@ -56,11 +56,11 @@ function getWeatherWeeklyHandler() {
   getWeatherWeeklyForecast(tempForm, location);
 }
 
-function getLocationWeatherHandler(e) {
-  const loc = config.searchField.value;
-  if (activeTab == "now") getWeatherNow(tempForm, loc);
-  else if ((activeTab = "today")) getWeatherForecastHourly(tempForm, loc);
-  else getWeatherWeeklyForecast(tempForm, loc);
+function getLocationWeatherHandler() {
+  location = config.searchField.value;
+  if (activeTab == "now") getWeatherNow(tempForm, location);
+  else if ((activeTab = "today")) getWeatherForecastHourly(tempForm, location);
+  else getWeatherWeeklyForecast(tempForm, location);
 }
 
 config.searchField.addEventListener("keydown", (e) => {

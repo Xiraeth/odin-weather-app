@@ -2,41 +2,43 @@ import * as config from "./config.js";
 import getCoordinates from "./getCoords.js";
 
 export default async function getWeatherForecastHourly(tempForm, location) {
-  config.content.innerHTML = "";
-  const { lat, long } = await getCoordinates();
-  let url;
-  if (location == "here")
-    url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=1`;
-  else {
-    url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=1`;
-  }
-  const request = await fetch(url);
-  const data = await request.json();
+  try {
+    config.timeButtons.style.display = "flex";
+    config.content.innerHTML = "";
+    const { lat, long } = await getCoordinates();
+    let url;
+    if (location == "here" || location == "")
+      url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${lat},${long}&days=1`;
+    else {
+      url = `${config.WEATHER_BASE_URL}/forecast.json?key=${config.WEATHER_API_KEY}&q=${location}&days=1`;
+    }
+    const request = await fetch(url);
+    const data = await request.json();
 
-  const todaysForecast = data.forecast.forecastday[0].day;
-  const hourlyForecast = data.forecast.forecastday[0];
-  console.log(data);
-  const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const now = new Date();
-  const month = now.getMonth();
-  const day = now.getDate();
-  const year = now.getFullYear();
-  const markup = `
+    const todaysForecast = data.forecast.forecastday[0].day;
+    const hourlyForecast = data.forecast.forecastday[0];
+    console.log(data);
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const now = new Date();
+    const month = now.getMonth();
+    const day = now.getDate();
+    const year = now.getFullYear();
+    const markup = `
   <div class="weatherTodayCard">
     <div class="todayHeader">
       <div class="dateAndLocation">
         <div class="city">${data.location.name}, ${data.location.country}</div>
         <div class="date">${daysOfWeek[now.getDay()]}, ${day}/${
-    month + 1
-  }/${year}</div>
+      month + 1
+    }/${year}</div>
       </div>
       <div class="stats">
         <tempStats>
@@ -63,15 +65,23 @@ export default async function getWeatherForecastHourly(tempForm, location) {
         </otherStats>
       </div>
       <div class="statusAndIcon">${todaysForecast.condition.text} <img src="${
-    todaysForecast.condition.icon
-  }" alt="Weather Icon"></div>
+      todaysForecast.condition.icon
+    }" alt="Weather Icon"></div>
       </div>
     </div>
   `;
 
-  config.content.insertAdjacentHTML("afterbegin", markup);
-  const todayCard = document.querySelector(".weatherTodayCard");
-  createHourlyForecast(hourlyForecast.hour, todayCard, tempForm);
+    config.content.insertAdjacentHTML("afterbegin", markup);
+    const todayCard = document.querySelector(".weatherTodayCard");
+    createHourlyForecast(hourlyForecast.hour, todayCard, tempForm);
+  } catch (err) {
+    config.timeButtons.style.display = "none";
+    const errorDiv = document.createElement("div");
+    errorDiv.classList.add("errorMessage");
+    errorDiv.textContent = err;
+    config.content.innerHTML = "";
+    config.content.insertAdjacentElement("afterbegin", errorDiv);
+  }
 }
 
 function createHourlyForecast(hourlyForecastArray, content, tempForm) {
