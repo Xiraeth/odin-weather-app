@@ -120,9 +120,8 @@ function createHourlyForecast(hourlyForecastArray, content, tempForm) {
         <div class="wind_str">Wind: <span>${
           forecastObj.wind_kph
         } km/h</span></div>
-        <div class="wind_dir">Wind Dir.: <span>${
-          forecastObj.wind_dir
-        }</span></div>
+        <div class="wind_dir">Wind Dir.: <span>${forecastObj.wind_dir}</span>
+        </div>
       </div>
       `;
     }

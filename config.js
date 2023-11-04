@@ -7,4 +7,5 @@ export const switchButton = document.querySelector(".switchButton");
 export const timeButtons = document.querySelector(".timeButtons");
 export const nowButton = document.querySelector(".nowButton");
 export const todayButton = document.querySelector(".todayButton");
+export const weekButton = document.querySelector(".thisWeekButton");
 export const content = document.querySelector(".content");

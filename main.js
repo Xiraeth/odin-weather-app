@@ -2,6 +2,7 @@
 
 import getWeatherNow from "./weatherNow.js";
 import getWeatherForecastHourly from "./weatherToday.js";
+import getWeatherWeeklyForecast from "./weatherWeek.js";
 import * as config from "./config.js";
 
 let tempForm = "celsius";
@@ -14,6 +15,7 @@ config.timeButtons.addEventListener("click", switchActiveTimeButton);
 config.switchButton.addEventListener("click", switchButtonHandler);
 config.nowButton.addEventListener("click", getWeatherNowHandler);
 config.todayButton.addEventListener("click", getWeatherTodayHandler);
+config.weekButton.addEventListener("click", getWeatherWeeklyHandler);
 
 function switchActiveTimeButton(e) {
   const btn = e.target.closest("button");
@@ -37,6 +39,7 @@ function switchButtonHandler(e) {
 
   if (activeTab == "now") getWeatherNow(tempForm);
   else if (activeTab == "today") getWeatherForecastHourly(tempForm);
+  else getWeatherWeeklyForecast(tempForm);
 }
 
 function getWeatherNowHandler() {
@@ -45,4 +48,8 @@ function getWeatherNowHandler() {
 
 function getWeatherTodayHandler() {
   getWeatherForecastHourly(tempForm);
+}
+
+function getWeatherWeeklyHandler() {
+  getWeatherWeeklyForecast(tempForm);
 }

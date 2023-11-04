@@ -31,7 +31,7 @@
 }
 
 .weatherTodayCard .dateAndLocation {
-  width: 40%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -51,7 +51,7 @@
 }
 
 .todayHeader .stats {
-  width: 40%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,8 +67,12 @@
 }
 
 .todayHeader .statusAndIcon {
+  width: 20%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: end;
+  gap: 1rem;
   font-size: 2em;
 }
 

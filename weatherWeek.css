@@ -1,1 +1,180 @@
 @import url("style.css");
+@import url("style.css");
+
+.daySegments .day {
+  text-align: center;
+}
+
+.weatherWeeklyCard .daySegments {
+  font-size: 1em;
+  min-height: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@import url("style.css");
+
+.weatherWeeklyCard {
+  color: white;
+  font-family: meri, serif;
+  font-size: 1rem;
+  margin: auto;
+  width: 1600px;
+  height: 550px;
+  border: 1px solid black;
+  border-radius: 10px;
+  outline: none;
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(26, 176, 196, 0.3),
+    rgba(22, 189, 111, 0.5)
+  );
+  padding: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.weatherWeeklyCard .todayHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weatherWeeklyCard .dateAndLocation {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: flex-start;
+  /* gap: 2rem; */
+}
+
+.weatherWeeklyCard .dateAndLocation .city {
+  font-family: agb;
+  font-size: 3em;
+  line-height: 2.5rem;
+  padding-bottom: 10px;
+}
+
+.weatherWeeklyCard .dateAndLocation .date {
+  font-size: 2em;
+}
+
+.todayHeader .stats {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.todayHeader .stats div {
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.todayHeader .timeLive {
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: end;
+  gap: 1rem;
+  font-size: 2.5em;
+  font-style: italic;
+}
+
+.weatherWeeklyCard .daySegments {
+  font-size: 1em;
+  min-height: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.weatherWeeklyCard .daySegments > div:not(.border) {
+  width: 12.5%;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
+  padding: 1em;
+  transition: all 0.2s;
+}
+
+.daySegments .day {
+  text-align: center;
+}
+
+.weatherWeeklyCard .daySegments > div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.weatherWeeklyCard .daySegments > div .day {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.7em;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
+.weatherWeeklyCard .daySegments .border {
+  height: 100%;
+  background: black;
+  width: 1px;
+  content: "";
+}
+
+@media only screen and (max-width: 1600px) {
+  .weatherWeeklyCard {
+    font-size: 0.7rem;
+    width: 1000px;
+  }
+
+  .weatherWeeklyCard .dateAndLocation {
+    width: 30%;
+  }
+
+  .weatherWeeklyCard .daySegments .border {
+    display: none;
+  }
+
+  .skippable {
+    display: none;
+  }
+
+  .weatherWeeklyCard .daySegments > div > div {
+    gap: 0;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .weatherWeeklyCard {
+    font-size: 0.4rem;
+    width: 450px;
+  }
+
+  .weatherWeeklyCard .dateAndLocation .city {
+    font-family: meri;
+  }
+}
+
+.hidden {
+  display: none;
+}
