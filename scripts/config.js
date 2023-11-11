@@ -1,6 +1,3 @@
-import * as weatherNow from "./weatherNow.js";
-import * as weatherToday from "./weatherToday.js";
-
 export const WEATHER_API_KEY = "e6eda6ffd30e45aebef74228232910 ";
 export const WEATHER_BASE_URL = "https://api.weatherapi.com/v1";
 export const switchButton = document.querySelector(".switchButton");
